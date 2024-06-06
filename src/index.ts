@@ -3,10 +3,4 @@ import { User } from "./model";
 
 const admin = new User({email: "admin@gmail.com",name: "admin",pass: "123456789",username: "admin"})
 
-const user1 = admin.registerUser({
-    email: "usuario1@gmail.com",
-    name: "usuario1",
-    pass: "senhausuario1",
-    username: "usuario1"
-})
-
+const admin2 = new User({email: "admin2@gmail.com", name: "admin",pass: "3123123", username: "admin2"})
