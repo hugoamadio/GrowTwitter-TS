@@ -1,5 +1,6 @@
+import { tweetDB } from "../database/Tweet.db";
 import { userDB } from "../database/User.db";
-import { UserType } from "../types";
+import { TweetType, UserType } from "../types";
 import { v4 as uuid } from "uuid";
 
 class User {
@@ -21,6 +22,10 @@ class User {
     this.pass = user.pass;
 
     userDB.push(user)
+  }
+
+  sendTweet(tweet: TweetType){
+      return tweetDB.push(tweet)
   }
 }
 
