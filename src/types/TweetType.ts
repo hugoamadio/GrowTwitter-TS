@@ -1,11 +1,12 @@
 import { User } from "../model"
+import UserType from "./UserType"
 
 interface TweetType{
     id?: string
     user: User
     content: string
     type: string
-    likes?: any []
+    likes?: UserType []
 }
 
 export default TweetType

@@ -25,37 +25,47 @@ class User {
     userDB.push(user)
   }
 
-  followUser(user: any){
+  getId(){
+    return this.id
+  }
+
+  followUser(user: User){ //Adiciona o usuario a seguir no array following da classe
     if(user.id === this.id){
       throw new Error("Você não pode seguir você mesmo.")
     }
     return this.following.push(user)
   }
 
-  getFollowingList(){
+  getFollowingList(){ //Percorre o array following exibindo cada item do array
     return this.following.forEach(item => console.log(item.id))
   }
 
-  sendTweet(tweet: TweetType){
+  sendTweet(tweet: TweetType){//Adiciona o tweet passado no database tweetDB
       return tweetDB.push(tweet)
   }
 
-  showTweets(){
+  showTweets(){ //Mostra todos os tweets do tipo normal
     tweetDB.forEach(item => {
       if(item.user.id === this.id && item.type === "normal"){
-        return console.log(`@${this.username}: ${item.content}\n     <likes>\n     <replies>`)
+        // tweetDB.find(item => item.user.username === this.username)
+        return console.log(`@${this.username}: ${item.content}\n     <${item.likes?.length}>\n     <replies>`)
       }
     })
   }
 
-  likeTweet(tweet: Tweet){
+  likeTweet(tweet: Tweet){ //Adiciona o this.id no array likes da classe Tweet
     if(tweet.user.username === this.username){
       throw new Error("Você não pode curtir seu próprio tweet.")
     }
-    tweet.likes.push(this.id)
+    tweet.likes.push({
+       email: this.email,
+       name: this.name,
+       pass: this.pass,
+       username: this.username
+    })
   }
 
-  replyTweet(tweet: Tweet, newUser: User){
+  replyTweet(tweet: Tweet, newUser: User){ //Copia o tweet a ser replicado adicionando ele no DB tweetDB com o User atualizado
     if(tweet.user.username === this.username){
       throw new Error("Não é possivel replicar seu próprio tweet")
     }
@@ -64,7 +74,6 @@ class User {
     newTweet.user = newUser
     return tweetDB.push(newTweet)
   }
-
 }
 
 export default User;
