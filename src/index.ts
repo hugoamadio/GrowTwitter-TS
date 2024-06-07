@@ -10,6 +10,7 @@ const tweet2 = new Tweet({content: "conteúdo do 2° tweet", type: "normal", use
 const tweet3 = new Tweet({content: "conteúdo do 3° tweet", type: "reply", user: admin})
 
 admin.sendTweet(tweet1)
-console.log(tweetDB)
-console.log("---------------------------------")
-console.log(userDB)
+admin.sendTweet(tweet2)
+admin.sendTweet(tweet3)
+
+admin.showTweets()

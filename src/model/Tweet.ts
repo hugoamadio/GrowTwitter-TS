@@ -17,6 +17,10 @@ class Tweet{
         this.content = tweet.content
         this.type = tweet.type
     }
+
+    show(){
+        return console.log({id: this.id, user: this.user, content: this.content, type: this.type})
+    }
 }
 
 export default Tweet

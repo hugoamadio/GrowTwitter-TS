@@ -4,7 +4,7 @@ import { TweetType, UserType } from "../types";
 import { v4 as uuid } from "uuid";
 
 class User {
-  id: string;
+  private id: string;
   name: string;
   email: string;
   username: string;
@@ -26,6 +26,14 @@ class User {
 
   sendTweet(tweet: TweetType){
       return tweetDB.push(tweet)
+  }
+
+  showTweets(){
+    tweetDB.forEach(item => {
+      if(item.user.id === this.id && item.type === "normal"){
+        return console.log(`@${this.username}: ${item.content}\n     <likes>\n     <replies>`)
+      }
+    })
   }
 }
 
