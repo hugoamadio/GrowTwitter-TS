@@ -55,6 +55,16 @@ class User {
     tweet.likes.push(this.id)
   }
 
+  replyTweet(tweet: Tweet, newUser: User){
+    if(tweet.user.username === this.username){
+      throw new Error("Não é possivel replicar seu próprio tweet")
+    }
+    const newTweet = {...tweet}
+    newTweet.type = "reply"
+    newTweet.user = newUser
+    return tweetDB.push(newTweet)
+  }
+
 }
 
 export default User;
