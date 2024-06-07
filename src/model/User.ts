@@ -9,6 +9,7 @@ class User {
   email: string;
   username: string;
   pass: string;
+  private following: any[] = []
 
   constructor(user: UserType) {
     const verifyUser = userDB.find((item) => item.username === user.username);
@@ -20,8 +21,18 @@ class User {
     this.email = user.email;
     this.username = user.username
     this.pass = user.pass;
-
     userDB.push(user)
+  }
+
+  followUser(user: any){
+    if(user.id === this.id){
+      throw new Error("Você não pode seguir você mesmo.")
+    }
+    return this.following.push(user)
+  }
+
+  getFollowingList(){
+    return this.following.forEach(item => console.log(item.id))
   }
 
   sendTweet(tweet: TweetType){

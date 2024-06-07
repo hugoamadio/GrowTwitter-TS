@@ -4,6 +4,7 @@ interface UserType{
     email: string
     username: string
     pass: string
+    following?: any[]
 }
 
 export default UserType
