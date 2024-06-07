@@ -9,6 +9,7 @@ const admin3 = new User({email: "admin3@gmail.com", name: "admin",pass: "dk2nmds
 const tweet1 = new Tweet({content: "conteúdo do 1° tweet.", type: "normal", user: admin})
 const tweet2 = new Tweet({content: "conteúdo do 2° tweet", type: "normal", user: admin})
 const tweet3 = new Tweet({content: "conteúdo do 3° tweet", type: "reply", user: admin})
+const tweet4 = new Tweet({content: "conteúdo do 4° tweet", type: "normal", user: admin2})
 
 admin.sendTweet(tweet1)
 admin.sendTweet(tweet2)
@@ -16,4 +17,5 @@ admin.sendTweet(tweet3)
 
 admin.followUser(admin2)
 admin.followUser(admin3)
-admin.getFollowingList()
+admin.likeTweet(tweet4)
+admin3.likeTweet(tweet4)

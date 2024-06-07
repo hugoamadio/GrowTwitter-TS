@@ -7,6 +7,7 @@ class Tweet{
     user: User
     content: string
     type: string
+    likes: any[] = []
 
     constructor(tweet: TweetType){
         if(tweet.type !== "normal" && tweet.type !== "reply"){
@@ -20,6 +21,10 @@ class Tweet{
 
     show(){
         return console.log({id: this.id, user: this.user, content: this.content, type: this.type})
+    }
+
+    showLikes(){
+        return console.log(this.likes.length + " likes")
     }
 }
 

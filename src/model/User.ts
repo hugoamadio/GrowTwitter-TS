@@ -2,6 +2,7 @@ import { tweetDB } from "../database/Tweet.db";
 import { userDB } from "../database/User.db";
 import { TweetType, UserType } from "../types";
 import { v4 as uuid } from "uuid";
+import Tweet from "./Tweet";
 
 class User {
   private id: string;
@@ -9,7 +10,7 @@ class User {
   email: string;
   username: string;
   pass: string;
-  private following: any[] = []
+  following: any[] = []
 
   constructor(user: UserType) {
     const verifyUser = userDB.find((item) => item.username === user.username);
@@ -46,6 +47,14 @@ class User {
       }
     })
   }
+
+  likeTweet(tweet: Tweet){
+    if(tweet.user.username === this.username){
+      throw new Error("Você não pode curtir seu próprio tweet.")
+    }
+    tweet.likes.push(this.id)
+  }
+
 }
 
 export default User;

@@ -5,6 +5,7 @@ interface TweetType{
     user: User
     content: string
     type: string
+    likes?: any []
 }
 
 export default TweetType
