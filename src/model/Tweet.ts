@@ -23,13 +23,8 @@ class Tweet {
 
   show() {
     //Retorna o tweet inteiro
-    return console.log({
-      id: this.id,
-      user: this.user,
-      content: this.content,
-      type: this.type,
-      likes: this.likes.length,
-    });
+    const tweet = `@${this.user.username}: ${this.content}\n    <${this.likes.length} likes>\n    <Replys>`
+    return console.log(tweet);
   }
 
   showLikes() {

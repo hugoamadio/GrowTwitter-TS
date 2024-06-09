@@ -27,3 +27,5 @@ vanessa.likeTweet(tweet1)
 italo.replyTweet(tweet2, italo)
 
 // tweet1.showLikes()
+
+tweet1.show()
