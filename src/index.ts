@@ -28,4 +28,6 @@ italo.replyTweet(tweet2, italo)
 
 // tweet1.showLikes()
 
-tweet1.show()
+// tweet4.showLikes()
+
+italo.showFeed()

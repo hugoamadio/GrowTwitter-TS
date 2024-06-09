@@ -53,6 +53,15 @@ class User {
     })
   }
 
+  showFeed(){
+    tweetDB.forEach(item => {
+      if(item.user.id === this.id){
+        // tweetDB.find(item => item.user.username === this.username)
+        return console.log(`@${this.username}: ${item.content}\n     <${item.likes?.length}>\n     <replies>`)
+      }
+    })
+  }
+
   likeTweet(tweet: Tweet){ //Adiciona o user que curtiu no array likes da classe Twet
     if(tweet.user.username === this.username){
       throw new Error("Você não pode curtir seu próprio tweet.")

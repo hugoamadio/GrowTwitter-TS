@@ -10,6 +10,7 @@ class Tweet {
   content: string;
   type: string;
   likes: User[] = [];
+  replies: User[] = []
 
   constructor(tweet: TweetType) {
     if (tweet.type !== "normal" && tweet.type !== "reply") {
@@ -40,6 +41,10 @@ class Tweet {
         `@${this.user.username}: ${this.content}\n   [@${this.likes[0].name} e mais ${this.likes.length-1} usuários curtiram isso]`
       );
     }
+  }
+
+  showReplies(){
+
   }
 }
 
