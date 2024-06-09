@@ -9,7 +9,7 @@ class Tweet {
   user: User;
   content: string;
   type: string;
-  likes: UserType[] = [];
+  likes: User[] = [];
 
   constructor(tweet: TweetType) {
     if (tweet.type !== "normal" && tweet.type !== "reply") {

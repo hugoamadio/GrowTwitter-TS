@@ -10,7 +10,7 @@ class User {
   email: string;
   username: string;
   pass: string;
-  following: any[] = []
+  following: User[] = []
 
   constructor(user: UserType) {
     const verifyUser = userDB.find((item) => item.username === user.username);
@@ -53,16 +53,11 @@ class User {
     })
   }
 
-  likeTweet(tweet: Tweet){ //Adiciona o this.id no array likes da classe Tweet
+  likeTweet(tweet: Tweet){ //Adiciona o user que curtiu no array likes da classe Twet
     if(tweet.user.username === this.username){
       throw new Error("Você não pode curtir seu próprio tweet.")
     }
-    tweet.likes.push({
-       email: this.email,
-       name: this.name,
-       pass: this.pass,
-       username: this.username
-    })
+    tweet.likes.push(this)
   }
 
   replyTweet(tweet: Tweet, newUser: User){ //Copia o tweet a ser replicado adicionando ele no DB tweetDB com o User atualizado
