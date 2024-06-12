@@ -22,6 +22,9 @@ vanessa.likeTweet(tweet4);
 anderson.likeTweet(tweet4);
 anderson.likeTweet(tweet1);
 vanessa.likeTweet(tweet1);
-italo.replyTweet(tweet2);
+italo.replyTweet(tweet2, "Muito legal esse Tweet");
+vanessa.replyTweet(tweet2, "Legal mesmo")
+vanessa.likeTweet(tweet2)
 
-italo.showFeed();
+
+tweet2.showReplies()

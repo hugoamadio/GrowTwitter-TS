@@ -8,6 +8,7 @@ abstract class Tweet {
   content: string;
   type: string;
   likes: User[] = [];
+  replies: Tweet[] = []
 
   constructor(tweet: TweetType) {
     if (tweet.type !== "normal" && tweet.type !== "reply") {
@@ -41,8 +42,11 @@ abstract class Tweet {
   }
 
   showReplies(){
-    
-  }
+    console.log(`@${this.user.username}: ${this.content}`)
+    this.replies.forEach(item => {
+      console.log(`> ${item.user.username}: ${item.content}`)
+    })
 }
 
+}
 export default Tweet;

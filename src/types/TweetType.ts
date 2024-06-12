@@ -6,7 +6,7 @@ interface TweetType{
     content: string
     type: string
     likes?: User[]
-    replies?: User[]
+    replies?: TweetType[]
 }
 
 export default TweetType

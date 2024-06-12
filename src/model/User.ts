@@ -72,12 +72,13 @@ class User {
     tweet.likes.push(this)
   }
 
-  replyTweet(tweet: Tweet){ //Copia o tweet a ser replicado adicionando ele no DB tweetDB com o User atualizado
+  replyTweet(tweet: Tweet, content: string){ //Copia o tweet a ser replicado adicionando ele no DB tweetDB com o User atualizado
     if(tweet.user.username === this.username){
       throw new Error("Não é possivel replicar seu próprio tweet")
     }
-    const newTweet = new TweetReply({content: tweet.content, type: "reply", user: this})
-    return tweetDB.push(newTweet)
+    const newTweet = new TweetReply({content: content, type: "reply", user: this})
+    tweet.replies.push(newTweet)
+    return tweetDB.push({id: newTweet.id, user: newTweet.user, content: newTweet.content, type: newTweet.type, likes: newTweet.likes, replies: newTweet.replies})
   }
 }
 
