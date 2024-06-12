@@ -1,16 +1,13 @@
 import { TweetType, UserType } from "../types";
-import { v4 as uuid } from "uuid";
 import User from "./User";
-import { userDB } from "../database/User.db";
-import { tweetDB } from "../database/Tweet.db";
+import { v4 as uuid } from 'uuid'
 
-class Tweet {
+abstract class Tweet {
   id: string;
   user: User;
   content: string;
   type: string;
   likes: User[] = [];
-  replies: User[] = []
 
   constructor(tweet: TweetType) {
     if (tweet.type !== "normal" && tweet.type !== "reply") {
@@ -44,7 +41,7 @@ class Tweet {
   }
 
   showReplies(){
-
+    
   }
 }
 

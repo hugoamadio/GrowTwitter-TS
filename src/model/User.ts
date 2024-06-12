@@ -3,6 +3,8 @@ import { userDB } from "../database/User.db";
 import { TweetType, UserType } from "../types";
 import { v4 as uuid } from "uuid";
 import Tweet from "./Tweet";
+import TweetNormal from "./TweetNormal";
+import TweetReply from "./TweetReply";
 
 class User {
   private id: string;
@@ -41,7 +43,8 @@ class User {
   }
 
   sendTweet(tweet: TweetType){//Adiciona o tweet passado no database tweetDB
-      return tweetDB.push(tweet)
+      const newTweet = new TweetNormal(tweet)
+      return tweetDB.push(newTweet)
   }
 
   showTweets(){ //Mostra todos os tweets do tipo normal
@@ -69,13 +72,11 @@ class User {
     tweet.likes.push(this)
   }
 
-  replyTweet(tweet: Tweet, newUser: User){ //Copia o tweet a ser replicado adicionando ele no DB tweetDB com o User atualizado
+  replyTweet(tweet: Tweet){ //Copia o tweet a ser replicado adicionando ele no DB tweetDB com o User atualizado
     if(tweet.user.username === this.username){
       throw new Error("Não é possivel replicar seu próprio tweet")
     }
-    const newTweet = {...tweet}
-    newTweet.type = "reply"
-    newTweet.user = newUser
+    const newTweet = new TweetReply({content: tweet.content, type: "reply", user: this})
     return tweetDB.push(newTweet)
   }
 }
