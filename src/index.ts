@@ -1,3 +1,4 @@
+import { tweetDB } from "./database/Tweet.db";
 import { TweetNormal, TweetReply } from "./model";
 import User from "./model/User";
 
@@ -27,4 +28,6 @@ vanessa.replyTweet(tweet2, "Legal mesmo")
 vanessa.likeTweet(tweet2)
 
 
-tweet2.showReplies()
+// tweet2.showReplies()
+
+tweet4.showLikes()
